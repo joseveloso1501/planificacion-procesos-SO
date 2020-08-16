@@ -5,7 +5,7 @@
 
 void rr(int np, int quantum) {
 
-	printf("\nROUND ROBIN");
+	printf("ROUND ROBIN");
 	
 	//int np=11, procesos[10], quantum = 0, nq = 0;
 	int procesos[10], nq = 0;
@@ -17,9 +17,13 @@ void rr(int np, int quantum) {
 	//	printf("\nNumero de procesos(%d): ", np);
 	//	scanf("%d", &np);
 	//}
+
+	printf("\nNumero de procesos: %d", np);
+
 	//para i=0, mientras i<np, hacer:...
 	// pedimos el tamaño de cada proceso.
-	printf("\nNumero de procesos: %d", np);
+
+
 	for(int i=0; i<np; i++) {
 		printf("\nInserte el proceso %d :", i+1);
 		scanf("%d", &procesos[i]);
@@ -49,14 +53,14 @@ void rr(int np, int quantum) {
 	
 	tp = tp / np;
 	
-	printf("\nTiempo promedio RR %f:", tp);
+	printf(" \nTiempo promedio RR %f:", tp);
 
 }
 
 
 
 void fifo(int np){
-	printf("\nFIFO");
+	printf("FIFO");
 	//int np=atoi(argv[2]), procesos[10];
 	int procesos[10];
 	double tf = 0, tp;// tiempo promedio.
@@ -65,10 +69,11 @@ void fifo(int np){
 	//	printf("\nNumero de procesos: ");
 	//	scanf("%d", &np);
 	//}
-	//para i=0, mientras i<np, hacer:...
-	// pedimos el tamaño de cada proceso.
 
 	printf("\nNumero de procesos: %d", np);
+
+	//para i=0, mientras i<np, hacer:...
+	// pedimos el tamaño de cada proceso.
 
 	for(int i=0; i<np; i++) {
 		printf("\nInserte el proceso %d :", i+1);
@@ -90,7 +95,7 @@ void fifo(int np){
 }
 
 int main(int argc, char *argv[]) {
-	printf("\nMAIN");
+	printf("\nAlgoritmo escogido: ");
 
 	if (!(strcmp(argv[1], "-F"))){
 		fifo(atoi(argv[2]));
@@ -106,6 +111,6 @@ int main(int argc, char *argv[]) {
 			}
 		}
 	}
-
+	printf("\nFin del programa\n");
 	return 0;
 }

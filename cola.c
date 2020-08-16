@@ -17,23 +17,22 @@ void createElement(Element *_Element, int dato )
     _Element->dato=dato;
 }
 
-void push(Element *_Element)
-{
+void push(Element *_Element){
+    
     _Element->next=NULL;
-    //Si el primero no existe quiere decir que no hay nada en la cola y esta vacia
-    if(first==NULL){
+    
+    if(first==NULL){//Si el primero no existe quiere decir que no hay nada en la cola y esta vacia
         first=_Element; //El primer elemento será el nuevo elemento creado
         last=_Element; //Y también será el ultimo dado que solo existe uno en la cola
     }
     else{
-        //Si no 
         last->next=_Element; 
         last=_Element;
     }
 }
 
-Element * pop()
-{
+Element * pop(){
+    
     if(first==NULL)
         return NULL;
     //Decimos que el primer elemento en la cola es el que se va a devolver para imprimir
@@ -45,8 +44,7 @@ Element * pop()
 }
 
 //Desencolar e imprimir
-void printAndPop()
-{
+void printAndPop(){
     //Obtiene el primer elemento de la cola
     Element *i=pop();
     //Mientras todavia haya elementos en cola que los imprima
@@ -58,18 +56,22 @@ void printAndPop()
     }
 }
 
-int main ()
-{
+int main (){
+    
     Element *_Element = (Element *) malloc (sizeof(Element));
-
+    Element *_Element2 = (Element *) malloc (sizeof(Element2));
     //Element *_Element;
 
     createElement(_Element,1);
+    createElement(_Element,loop());
+
     //Encolar
     push(_Element);
+    push(_Element2);
     //Desconlar e imprimir
     printAndPop();
 
     free(_Element);
+    free(_Element2);
     return 0;
 }
