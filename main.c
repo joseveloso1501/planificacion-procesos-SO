@@ -11,8 +11,8 @@ void rr(int np, int quantum) {
 	printf("ROUND ROBIN");
 	
 	//int np=11, procesos[10], quantum = 0, nq = 0;
-	int procesos[10], nq = 0;
-	double tp = 0;// tiempo promedio.
+	int procesos[np], nq = 0;
+	double tp = 0;	// tiempo promedio.
 	
 	int finalizado = 0;
 	
@@ -23,12 +23,8 @@ void rr(int np, int quantum) {
 
 	printf("\nNumero de procesos: %d", np);
 
-	//para i=0, mientras i<np, hacer:...
-	// pedimos el tamaño de cada proceso.
-
-
-	for(int i=0; i<np; i++) {
-		printf("\nInserte el proceso %d :", i+1);
+	for(int i=0; i<np; i++) {	//para i=0, mientras i<np, 
+		printf("\nInserte el proceso %d :", i+1);	// pedimos el tamaño de cada proceso.
 		scanf("%d", &procesos[i]);
 	}
 	
@@ -39,14 +35,14 @@ void rr(int np, int quantum) {
 	// Algoritmo RR
 	
 	while(finalizado == 0) {
-		finalizado = 1;// Sí finalizado
+		finalizado = 1;		// Sí finalizado
 		for(int i=0; i<np; i++) {
 			if(procesos[i] > 0) {
 				procesos[i] -= quantum;
 				nq++;
 				printf("\nQuantum[%d] proceso %d",nq, i+1);
 				if (procesos[i]>0) {
-					finalizado = 0; //No finalizado
+					finalizado = 0;		//No finalizado
 				} else {
 					tp += nq*quantum;
 				}
@@ -67,7 +63,7 @@ void fifo(int np){
 	printf("FIFO");
 	//int np=atoi(argv[2]), procesos[10];
 	int procesos[10];
-	double tf = 0, tp;// tiempo promedio.
+	double tf = 0, tp;	// tiempo promedio.
 	
 	//while (np > 10 || np <= 0) {
 	//	printf("\nNumero de procesos: ");
@@ -76,15 +72,12 @@ void fifo(int np){
 
 	printf("\nNumero de procesos: %d", np);
 
-	//para i=0, mientras i<np, hacer:...
-	// pedimos el tamaño de cada proceso.
-
-	for(int i=0; i<np; i++) {
-		printf("\nInserte el proceso %d :", i+1);
+	for(int i=0; i<np; i++) {	//para i=0, mientras i<np, hacer:...
+		printf("\nInserte el proceso %d :", i+1);	// pedimos el tamaño de cada proceso.
 		scanf("%d", &procesos[i]);
 	}
-	// Algoritmo FCFS
 	
+	// Algoritmo FCFS
 	for(int i=0; i<np; i++) {
 		tf += procesos[i];
 		tp = tp + tf;
@@ -94,7 +87,7 @@ void fifo(int np){
 	printf("\n-------------------------------");
 	printf("\nLa suma de los procesos %2.1f", tp);
 	tp = tp / np;
-	printf("\n\nTiempo promedio en FCFS fue de: %2.2f:", tp);
+	printf("\n\nTiempo promedio en FCFS fue de: %2.2f", tp);
 
 }
 //////////////////////////////--LOOP--//////////////////////////////////////////////
@@ -104,7 +97,6 @@ int loop() {
 	hasta = (rand() % 10) + 1; //generacion de numeros aleatorios del 1 al 10
 	for(int i = 0 ; i <= hasta ; i++) { //Asuma que todos los procesos entran al mismo instante de tiempo y los tiempos de r´afaga son desconocidos, 
 										//estos dependen del valor final del for en “loop” y la velocidad de su m´aquina
-
 
 		sleep(1);
 	}
@@ -168,23 +160,23 @@ void printAndPop(){
     }
 }
 
-int cola (){
+int cola (int pid){
     
+    pid = 1;
+
     Element *_Element = (Element *) malloc (sizeof(Element));
-    Element *_Element2 = (Element *) malloc (sizeof(Element));
-    //Element *_Element;
+    //Element *_Element2 = (Element *) malloc (sizeof(Element));
 
-    createElement(_Element,1);
-    createElement(_Element,loop());
+    createElement(_Element, pid);
+    //createElement(_Element, loop());
 
-    //Encolar
-    push(_Element);
-    push(_Element2);
-    //Desconlar e imprimir
-    printAndPop();
+    push(_Element);	//Encolar
+    //push(_Element2);
+    
+    printAndPop();	//Desconlar e imprimir
 
     free(_Element);
-    free(_Element2);
+    //free(_Element2);
     return 0;
 }
 
@@ -200,7 +192,7 @@ int main(int argc, char *argv[]) {
 		} else{
 			if (!(strcmp(argv[1], "-P")) && !(strcmp(argv[3], "-p"))){
 				printf("\nVUELVA PRONTO\n");
-				//prio(atoi(argv[2]), atoi(argv[4]));
+				//prio(atoi(argv[2]), (*argv[]));
 			} else{
 				printf("\nPARÁMETRO INGRESADO NO VALIDO\n");
 			}
